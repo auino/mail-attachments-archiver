@@ -22,7 +22,7 @@ IMAPSERVER = 'imap.gmail.com'
 # allowed senders list (may be configured separately for each directory)
 YOUR_MAIL = 'you@yourprovider.com'
 ALICE_MAIL = 'alice@herprovider.com'
-BOB_MAIL = 'bib@herprovider.com'
+BOB_MAIL = 'bob@hisprovider.com'
 
 # storage/archive capabilities configuration
 MAIL_MAPPINGS = [
