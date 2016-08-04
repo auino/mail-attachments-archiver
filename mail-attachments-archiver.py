@@ -140,5 +140,5 @@ for emailid in items:
 			# marking as read and delete, if necessary
 			if MARK_AS_READ: m.store(emailid.replace(' ',','),'+FLAGS','\Seen')
 			if DELETE_EMAIL: m.store(emailid.replace(' ',','),'+FLAGS','\\Deleted')
-
+# logout
 m.logout()
