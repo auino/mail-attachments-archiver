@@ -30,8 +30,6 @@ Following variables are used and should be configured:
 The behavior of the program is configured by associating specific senders to specific subjects keywords.
 When the program finds an email matching the couple (sender, subject), the attachment is stored on the disk.
 It is possible to set up a list of senders associated to a list of subjects.
-Both the checks are case insensitive.
-Concerning subject check, if the specified subject is found inside of the entire object (not equality comparison), the attachment is store, otherwise not.
 
 You can configure a separated list of senders (as in `mail-attachments-archiver.py`, for `YOUR_MAIL`, `ALICE_MAIL` and `BOB_MAIL` parameters, for reuse them), but it is not strictly necessary.
 
@@ -39,44 +37,33 @@ The most important part of the behavior settings is relative to the `MAIL_MAPPIN
 Such variable contains a list of rules objects, defined for instance as follows:
 
 ```
-	{
-		'senders': [ 'me@gmail.com', 'you@gmail.com' ],
-		'add_date': True,
-		'subject': [ 'GITHUB TEST', 'GITHUB-TEST', 'GITHUBTEST' ],
-		'destination': '/media/disk/test/'
-	}
+{
+	'senders': [ 'me@gmail.com', 'you@gmail.com' ],
+	'add_date': True,
+	'subject': [ 'GITHUB TEST', 'GITHUB-TEST', 'GITHUBTEST' ],
+	'destination': '/media/disk/test/'
+}
 ```
 
 The following attributes are needed:
- * `senders`
- * `add_date`
- * `subject`
- * `destination`
+ * `senders`, specifying the list of allowed source addresses
+ * `add_date`, specifying if the email date (in `YYYYMMDD` format) should be appended to the begin of the filename or not (if enabled, output format is in `20160731_filename.txt` format)
+ * `subject`, specifying the subject filter
+ * `destination`, specifying the destination directory of attached files
 
-TODO
+Source address and subject checks are both case insensitive.
+Concerning subject check, if the specified subject is found inside of the entire object (not equality comparison), the attachment is store, otherwise not.
 
 #### Additional settings ####
 
-# only consider unread emails?
-FILTER_UNREAD_EMAILS = True
-
-# mark emails as read after their attachments have been archived?
-MARK_AS_READ = False
-
-# delete emails after their attachments have been archived?
-DELETE_EMAIL = True
-
-# if no attachment is found, mark email as read?
-MARK_AS_READ_NOATTACHMENTS = False
-
-# if no attachment is found, delete email?
-DELETE_EMAIL_NOATTACHMENTS = True
-
-# if no match is found (on MAIL_MAPPINGS), mark email as read?
-MARK_AS_READ_NOMATCH = True
-
-# if no match is found (on MAIL_MAPPINGS), delete email?
-DELETE_EMAIL_NOMATCH = False
+Additional settings may be configured in order to define emails management.
+ * `FILTER_UNREAD_EMAILS` specifies if the program should only consider unread emails
+ * `MARK_AS_READ` specifies if the program should mark an email as read after its attachments are stored/archived
+ * `DELETE_EMAIL` specifies if the program should delete an email as read after its attachments are stored/archived
+ * `MARK_AS_READ_NOATTACHMENTS` specifies if the program should mark as read emails without attachments
+ * `DELETE_EMAIL_NOATTACHMENTS` specifies if the program should delete emails without attachments
+ * `MARK_AS_READ_NOMATCH` specifies if the program should mark as read emails not matching the configured rules
+ * `DELETE_EMAIL_NOMATCH` specifies if the program should delete emails not matching the configured rules
 
 ### Notes ###
 
