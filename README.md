@@ -38,7 +38,7 @@ You can configure a separated list of senders (as in `mail-attachments-archiver.
 The most important part of the behavior settings is relative to the `MAIL_MAPPINGS` variable content.
 Such variable contains a list of rules objects, defined for instance as follows:
 
-```json
+```
 	{
 		'senders': [ 'me@gmail.com', 'you@gmail.com' ],
 		'add_date': True,
