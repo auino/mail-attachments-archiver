@@ -38,7 +38,7 @@ You can configure a separated list of senders (as in `mail-attachments-archiver.
 The most important part of the behavior settings is relative to the `MAIL_MAPPINGS` variable content.
 Such variable contains a list of rules objects, defined for instance as follows:
 
-```
+```json
 	{
 		'senders': [ 'me@gmail.com', 'you@gmail.com' ],
 		'add_date': True,
@@ -54,6 +54,29 @@ The following attributes are needed:
  * `destination`
 
 TODO
+
+#### Additional settings ####
+
+# only consider unread emails?
+FILTER_UNREAD_EMAILS = True
+
+# mark emails as read after their attachments have been archived?
+MARK_AS_READ = False
+
+# delete emails after their attachments have been archived?
+DELETE_EMAIL = True
+
+# if no attachment is found, mark email as read?
+MARK_AS_READ_NOATTACHMENTS = False
+
+# if no attachment is found, delete email?
+DELETE_EMAIL_NOATTACHMENTS = True
+
+# if no match is found (on MAIL_MAPPINGS), mark email as read?
+MARK_AS_READ_NOMATCH = True
+
+# if no match is found (on MAIL_MAPPINGS), delete email?
+DELETE_EMAIL_NOMATCH = False
 
 ### Notes ###
 
