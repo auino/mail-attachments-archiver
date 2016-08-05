@@ -20,7 +20,7 @@ TODO
 
 ### Notes ###
 
-This program is an extended and customized version of a [code snipped found on StackOverflow](http://stackoverflow.com/questions/10182499/how-do-i-download-only-unread-attachments-from-a-specific-gmail-label).
+This program is an extended and customized version of a [code snipped found on Stack Overflow](http://stackoverflow.com/questions/10182499/how-do-i-download-only-unread-attachments-from-a-specific-gmail-label).
 
 ### Contacts ###
 
