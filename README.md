@@ -25,7 +25,33 @@ Following variables are used and should be configured:
  * `PWD`: adopted IMAP password
  * `IMAPSERVER` adopted IMAP server (e.g. `imap.gmail.com`)
 
-#### Allowed senders list ####
+#### Behavior configuration ####
+
+The behavior of the program is configured by associating specific senders to specific subjects keywords.
+When the program finds an email matching the couple (sender, subject), the attachment is stored on the disk.
+It is possible to set up a list of senders associated to a list of subjects.
+Both the checks are case insensitive.
+Concerning subject check, if the specified subject is found inside of the entire object (not equality comparison), the attachment is store, otherwise not.
+
+You can configure a separated list of senders (as in `mail-attachments-archiver.py`, for `YOUR_MAIL`, `ALICE_MAIL` and `BOB_MAIL` parameters, for reuse them), but it is not strictly necessary.
+
+The most important part of the behavior settings is relative to the `MAIL_MAPPINGS` variable content.
+Such variable contains a list of rules objects, defined for instance as follows:
+
+```
+	{
+		'senders': [ 'me@gmail.com', 'you@gmail.com' ],
+		'add_date': True,
+		'subject': [ 'GITHUB TEST', 'GITHUB-TEST', 'GITHUBTEST' ],
+		'destination': '/media/disk/test/'
+	}
+```
+
+The following attributes are needed:
+ * `senders`
+ * `add_date`
+ * `subject`
+ * `destination`
 
 TODO
 
