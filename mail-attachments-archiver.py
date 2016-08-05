@@ -14,7 +14,7 @@ import email, getpass, imaplib, os, time, re
 # CONFIGURATION BEGIN
 # --- --- --- --- ---
 
-# imap server connection configuration
+# IMAP server connection configuration
 USER = 'your-nas-mail-username'
 PWD = 'your-secret-password'
 IMAPSERVER = 'imap.gmail.com'
@@ -57,7 +57,7 @@ DELETE_EMAIL_NOMATCH = False
 #  CONFIGURATION END
 # --- --- --- --- ---
 
-# connecting to the imap serer
+# connecting to the IMAP serer
 m = imaplib.IMAP4_SSL(IMAPSERVER)
 m.login(USER, PWD)
 # use m.list() to get all the mailboxes

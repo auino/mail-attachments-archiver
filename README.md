@@ -16,6 +16,17 @@ git clone https://github.com/auino/mail-attachments-archiver.git
 
 ### Configuration ###
 
+Edit the `mail-attachments-archiver.py` file content by configuring the program and customizing its behavior.
+
+#### IMAP connection setup ####
+
+Following variables are used and should be configured:
+ * `USER`: adopted IMAP username (e.g. `username@gmail.com`)
+ * `PWD`: adopted IMAP password
+ * `IMAPSERVER` adopted IMAP server (e.g. `imap.gmail.com`)
+
+#### Allowed senders list ####
+
 TODO
 
 ### Notes ###
