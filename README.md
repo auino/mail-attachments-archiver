@@ -38,6 +38,7 @@ Such variable contains a list of rules objects, defined for instance as follows:
 
 ```
 {
+	'filter_sender': True,
 	'senders': [ 'me@gmail.com', 'you@gmail.com' ],
 	'add_date': True,
 	'subject': [ 'GITHUB TEST', 'GITHUB-TEST', 'GITHUBTEST' ],
@@ -46,6 +47,7 @@ Such variable contains a list of rules objects, defined for instance as follows:
 ```
 
 The following attributes are needed:
+ * `filter_sender`, specifying if the filter on sender's email address is active/considered or not
  * `senders`, specifying the list of allowed source addresses
  * `add_date`, specifying if the email date (in `YYYYMMDD` format) should be appended to the begin of the filename or not (if enabled, output format is in `20160731_filename.txt` format)
  * `subject`, specifying the subject filter

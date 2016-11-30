@@ -26,10 +26,10 @@ BOB_MAIL = 'bob@hisprovider.com'
 
 # storage/archive capabilities configuration
 MAIL_MAPPINGS = [
-	{ 'senders': [ YOUR_MAIL ], 'add_date': True, 'subject': [ 'TODO', 'TO-DO' ], 'destination': '/media/disk/todo/' },
-	{ 'senders': [ ALICE_MAIL ], 'add_date': True, 'subject': [ 'BACKUP' ], 'destination': '/media/disk/backup_alice/' },
-	{ 'senders': [ BOB_MAIL ], 'add_date': True, 'subject': [ 'BACKUP' ], 'destination': '/media/disk/backup_bob/' },
-	{ 'senders': [ YOUR_MAIL, ALICE_MAIL, BOB_MAIL ], 'add_date': False, 'subject': [ 'DATA' ], 'destination': '/media/disk/data/' },
+	{ 'filter_sender': True, 'senders': [ YOUR_MAIL ], 'add_date': True, 'subject': [ 'TODO', 'TO-DO' ], 'destination': '/media/disk/todo/' },
+	{ 'filter_sender': True, 'senders': [ ALICE_MAIL ], 'add_date': True, 'subject': [ 'BACKUP' ], 'destination': '/media/disk/backup_alice/' },
+	{ 'filter_sender': True, 'senders': [ BOB_MAIL ], 'add_date': True, 'subject': [ 'BACKUP' ], 'destination': '/media/disk/backup_bob/' },
+	{ 'filter_sender': True, 'senders': [ YOUR_MAIL, ALICE_MAIL, BOB_MAIL ], 'add_date': False, 'subject': [ 'DATA' ], 'destination': '/media/disk/data/' },
 ]
 
 # only consider unread emails?
@@ -84,13 +84,12 @@ for emailid in items:
 	# checking sender
 	sender = mail['from'].split()[-1]
 	senderaddress = re.sub(r'[<>]','', sender)
-	#if not (senderaddress.lower() in ALLOWED_SENDERS): continue
 	print "<"+mail['date']+"> "+"["+mail['from']+"] :"+mail['subject']
 	# check if subject is allowed
 	subject = mail['subject']
 	outputrule = None
 	for el in MAIL_MAPPINGS:
-		if not (senderaddress.lower() in el['senders']): continue
+		if el['filter_sender'] and (not (senderaddress.lower() in el['senders'])): continue
 		for sj in el['subject']:
 			if str(sj).lower() in subject.lower(): outputrule = el
 	if outputrule == None: # no match is found
