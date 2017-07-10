@@ -8,7 +8,7 @@
 # 
 
 # libraries import
-import email, getpass, imaplib, os, time, re
+import email, email.header, getpass, imaplib, os, time, re
 
 # --- --- --- --- ---
 # CONFIGURATION BEGIN
@@ -56,6 +56,9 @@ DELETE_EMAIL_NOMATCH = False
 # --- --- --- --- ---
 #  CONFIGURATION END
 # --- --- --- --- ---
+
+# source: https://stackoverflow.com/questions/12903893/python-imap-utf-8q-in-subject-string
+def decode_mime_words(s): return u''.join(word.decode(encoding or 'utf8') if isinstance(word, bytes) else word for word, encoding in email.header.decode_header(s))
 
 # connecting to the IMAP serer
 m = imaplib.IMAP4_SSL(IMAPSERVER)
@@ -126,6 +129,7 @@ for emailid in items:
 				if s in d: d = d.split(s)[0]
 			maildate = time.strftime('%Y%m%d', time.strptime(d, '%a, %d %b %Y %H:%M:%S'))
 			filename = maildate+'_'+filename
+		filename = decode_mime_words(u''+filename)
 		att_path = os.path.join(outputdir, filename)
 		# check if output directory exists
 		if not os.path.isdir(outputdir): os.makedirs(outputdir)
