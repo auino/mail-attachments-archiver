@@ -71,6 +71,11 @@ Additional settings may be configured in order to define emails management.
 
 This program is an extended and customized version of a [code snipped found on Stack Overflow](http://stackoverflow.com/questions/10182499/how-do-i-download-only-unread-attachments-from-a-specific-gmail-label).
 
+### Supporters ###
+
+* [sebastianberm](https://github.com/sebastianberm)
+* [DeltaLima](https://github.com/DeltaLima)
+
 ### Contacts ###
 
 You can find me on Twitter as [@auino](https://twitter.com/auino).
