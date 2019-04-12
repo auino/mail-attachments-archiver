@@ -15,7 +15,7 @@ import email, email.header, getpass, imaplib, os, time, re
 # --- --- --- --- ---
 
 # IMAP server connection configuration
-USER = 'your-nas-mail-username'
+USER = 'your-mail-username'
 PWD = 'your-secret-password'
 IMAPSERVER = 'imap.gmail.com'
 
@@ -67,7 +67,7 @@ m.login(USER, PWD)
 m.select("INBOX") # here you a can choose a mail box like INBOX instead
 
 # you could filter using the IMAP rules here (check http://www.example-code.com/csharp/imap-search-critera.asp)
-searcstring = 'ALL'
+searchstring = 'ALL'
 if FILTER_UNREAD_EMAILS: searchstring = 'UNSEEN'
 resp, items = m.search(None, searchstring)
 items = items[0].split() # getting the mails id
@@ -87,7 +87,7 @@ for emailid in items:
 	# checking sender
 	sender = mail['from'].split()[-1]
 	senderaddress = re.sub(r'[<>]','', sender)
-	print "<"+mail['date']+"> "+"["+mail['from']+"] :"+mail['subject']
+	print "<"+str(mail['date'])+"> "+"["+str(mail['from'])+"] :"+str(mail['subject'])
 	# check if subject is allowed
 	subject = mail['subject']
 	outputrule = None
