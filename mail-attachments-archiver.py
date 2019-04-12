@@ -135,15 +135,17 @@ for emailid in items:
 		if not os.path.isdir(outputdir): os.makedirs(outputdir)
 		# check if its already there
 		if not os.path.isfile(att_path):
-			print 'Saving to', str(att_path)
-			# finally write the stuff
-			fp = open(att_path, 'wb')
-			fp.write(part.get_payload(decode=True))
-			fp.close()
-			# marking as read and delete, if necessary
-			if MARK_AS_READ: m.store(emailid.replace(' ',','),'+FLAGS','\Seen')
-			if DELETE_EMAIL: m.store(emailid.replace(' ',','),'+FLAGS','\\Deleted')
+			try:
+				print 'Saving to', str(att_path)
+				# finally write the stuff
+				fp = open(att_path, 'wb')
+				fp.write(part.get_payload(decode=True))
+				fp.close()
+				# marking as read and delete, if necessary
+				if MARK_AS_READ: m.store(emailid.replace(' ',','),'+FLAGS','\Seen')
+				if DELETE_EMAIL: m.store(emailid.replace(' ',','),'+FLAGS','\\Deleted')
+			except: pass
 # Expunge the items marked as deleted... (Otherwise it will never be actually deleted)
-m.expunge()
+if DELETE_EMAIL: m.expunge()
 # logout
 m.logout()
