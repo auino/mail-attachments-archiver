@@ -94,7 +94,7 @@ for emailid in items:
 	for el in MAIL_MAPPINGS:
 		if el['filter_sender'] and (not (senderaddress.lower() in el['senders'])): continue
 		for sj in el['subject']:
-			if str(sj).lower() in subject.lower(): outputrule = el
+			if str(sj).lower() in str(subject).lower(): outputrule = el
 	if outputrule == None: # no match is found
 		# marking as read and delete, if necessary
 		if MARK_AS_READ_NOMATCH: m.store(emailid.replace(' ',','),'+FLAGS','\Seen')
