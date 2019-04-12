@@ -25,7 +25,7 @@ Following variables are used and should be configured:
  * `PWD`: adopted IMAP password
  * `IMAPSERVER` adopted IMAP server (e.g. `imap.gmail.com`)
 
-#### Behavior configuration ####
+#### Behavior configuration ####
 
 The behavior of the program is configured by associating specific senders to specific subjects keywords.
 When the program finds an email matching the couple (sender, subject), the attachment is stored on the disk.
